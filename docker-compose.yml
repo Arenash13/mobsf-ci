@@ -14,10 +14,12 @@ services:
     environment:
       - MOBSF_URL=http://mobsf:8000/
       - TARGET_PATH=${TARGET_PATH}
-
+      - MOBSF_API_KEY=12345
+      - RESCAN=1
+      
     volumes:
-      - "$PWD/output:/app/output"
-      - "$PWD/target:/app/target"
+      - "./output:/app/output"
+      - "./target:/app/target"
 
     depends_on:
       - mobsf

@@ -1,11 +1,11 @@
-FROM ruby:2.5-alpine
+FROM python:latest
 
 WORKDIR /app
 
-COPY Gemfile Gemfile.lock /app/
+RUN pip install requests
 
-RUN bundle && apk add --update bash
+RUN pip install requests-toolbelt
 
-COPY . . 
+COPY . .
 
-CMD ./wait-for-it.sh mobsf:8000 -- ruby scan.rb
+CMD ./wait-for-it.sh mobsf:8000 -- python scan.py
